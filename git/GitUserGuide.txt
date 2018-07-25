@@ -1,0 +1,7 @@
+###############################################################################
+#                        Git Skill User Guide                             #
+###############################################################################
+1. Config the git color display.
+$git config --global color.ui true
+
+Address:https://git.oschina.net/progit/
