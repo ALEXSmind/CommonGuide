@@ -53,3 +53,13 @@ $autoreconf -v --install
 $cd /home/haibotu/TangramProject/qemu/
 $make
 
+10.Qemu运行Kernel
+$sudo qemu-system-x86_64 -m 1024M -kernel /boot/vmlinuz-4.10.0-40-generic -initrd
+/boot/initrd.img-4.10.0-40-generic -enable-kvm -m 1024M -append "root=/dev/ram
+console=ttyS0,115200n8 console=tty1" -nographic
+#-kernel: bzImage
+#-initrd: ramfs
+#-m: memory size
+#-append: parameter to the Linux kernel
+#-nographic: no graphic config
+
