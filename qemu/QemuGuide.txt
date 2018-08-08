@@ -1,5 +1,5 @@
 ###############################################################################
-#                       Qemu 编译指南                                         #
+#                       Qemu 使用指南                                         #
 #                       作者：涂海波                                          #
 #                       公司：致象尔微                                        # 
 #                       时间：2017.10.26                                      #
@@ -63,3 +63,20 @@ console=ttyS0,115200n8 console=tty1" -nographic
 #-append: parameter to the Linux kernel
 #-nographic: no graphic config
 
+11.Qemu-nbd加载qcow2镜像文件
+#加载nbd驱动
+$sudo modprobe nbd max_part=8
+
+$modinfo hdb
+
+#连接 qemu-nbd
+$sudo qemu-nbd -c /dev/nbd0 centos.qcow2
+
+#查看分区
+$sudo fdisk -l /dev/nbd0
+
+#挂在分区
+$ sudo mount /dev/nbd0p1 /mnt/test1
+
+#去连接
+$ sudo qemu-nbd -d /dev/nbd0p1
