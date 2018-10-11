@@ -4,4 +4,12 @@
 1. Config the git color display.
 $git config --global color.ui true
 
+$git config --global user.email "xxx@xxx"
+
+$git config --global user.name "xxx@xxx"
+
+$git config --global core.editor vim
+
+$git config --global commit.template "xxx"
+
 Address:https://git.oschina.net/progit/
