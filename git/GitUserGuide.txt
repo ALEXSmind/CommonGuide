@@ -12,4 +12,6 @@ $git config --global core.editor vim
 
 $git config --global commit.template "xxx"
 
+$git config --global push.default simple
+
 Address:https://git.oschina.net/progit/
