@@ -25,3 +25,20 @@ nmap <C-[>f :cs find f <C-R>=expand("<cword>") <CR><CR>
 "path is the code didrectory
 cscope add ~/.vim/tags/cscope.out ~/.vim/tags
 set tags=~/.vim/tags/tags
+
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endfunction
+
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {<CR>}<ESC>O
+:inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+:inoremap " ""<ESC>i
+:inoremap ' ''<ESC>i
