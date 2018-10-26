@@ -17,6 +17,11 @@ syntax on
 imap <C-k> <Esc>
 vmap <C-k> <Esc>
 
+nmap <C-[>s :cs find s <C-R>=expand("<cword>") <CR><CR>
+nmap <C-[>g :cs find g <C-R>=expand("<cword>") <CR><CR>
+nmap <C-[>c :cs find c <C-R>=expand("<cword>") <CR><CR>
+nmap <C-[>f :cs find f <C-R>=expand("<cword>") <CR><CR>
+
 "path is the code didrectory
-cscope add /path/cscope.out /path
-set tags=/path/ags
+cscope add ~/.vim/tags/cscope.out ~/.vim/tags
+set tags=~/.vim/tags/tags
