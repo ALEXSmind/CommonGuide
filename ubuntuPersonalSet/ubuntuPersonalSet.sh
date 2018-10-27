@@ -29,6 +29,13 @@ function gitConfig()
     git config --global credential.helper store
 }
 
+function installVimPlug()
+{
+    git clone https://github.com/VundleVim/Vundle.vim.git \
+        ~/.vim/bundle/Vundle.vim
+}
+
 installSoftware
 gitConfig
-cpConfigFile
+#cpConfigFile
+installVimPlug
