@@ -8,6 +8,10 @@ function installSoftware()
     sudo apt-get install git
     sudo apt-get install vim
     sudo apt-get install ssh
+    sudo apt-get install python-autopep8
+    sudo apt-get install clang-format
+    sudo apt-get install golang-1.9
+    go get -u mvdan.cc/sh/cmd/shfmt
 }
 
 #copy the default config file
@@ -17,7 +21,7 @@ function cpConfigFile()
     cp ../git/.gitmsg ~/
 }
 
-#config the git 
+#config the git
 function gitConfig()
 {
     git config --global color.ui true

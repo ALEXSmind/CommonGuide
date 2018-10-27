@@ -8,16 +8,34 @@ set smartindent
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set textwidth=80
+set textwidth=79
 set hlsearch
 set number
 set cindent
 
+let python_highlight_all=1
 syntax on
 
 imap <C-k> <Esc>
 vmap <C-k> <Esc>
+nnoremap <C-\> %x<C-O>x
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Create the highlight group"
+highlight TrailSpace guibg=red ctermbg=darkred
+
+" Show the space located on the end of line"
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.cpp,*.cxx,*.sh match TrailSpace /\s\+$/
 " base config --->"
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
 
 " <--- cscope key map config"
 nmap <C-[>s :cs find s <C-R>=expand("<cword>") <CR><CR>
@@ -33,22 +51,22 @@ set tags=~/.vim/tags/tags
 " cscope and ctags config --->"
 
 " <--- Auto pair complete begin"
-function! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endfunction
-
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {<CR>}<ESC>O
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap " ""<ESC>i
-:inoremap ' ''<ESC>i
+"function! ClosePair(char)
+"    if getline('.')[col('.') - 1] == a:char
+"        return "\<Right>"
+"    else
+"        return a:char
+"    endif
+"endfunction
+"
+":inoremap ( ()<ESC>i
+":inoremap ) <c-r>=ClosePair(')')<CR>
+":inoremap { {<CR>}<ESC>O
+":inoremap } <c-r>=ClosePair('}')<CR>
+":inoremap [ []<ESC>i
+":inoremap ] <c-r>=ClosePair(']')<CR>
+":inoremap " ""<ESC>i
+":inoremap ' ''<ESC>i
 " Auto pair complete begin --->"
 
 " <--- Plug Vundle config begin "
@@ -79,6 +97,19 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " The nerdtree plug"
 Plugin 'https://github.com/scrooloose/nerdtree.git'
+
+" The ailine plug"
+Plugin 'bling/vim-airline'
+
+" The autopair plug for {
+" ["''"]
+" }
+"
+Plugin 'https://github.com/jiangmiao/auto-pairs.git'
+
+"autoformat
+Plugin 'Chiel92/vim-autoformat'
+
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -105,3 +136,13 @@ filetype plugin indent on    " required
 
 " auto open the NERDTree plugin"
 autocmd vimenter * NERDTree
+" Set the nerdtree size "
+let NERDTreeWinSize=10
+
+" auto set the default cursor position on the editing file"
+wincmd w
+autocmd VimEnter * wincmd w
+
+" auto format the code while you save the file
+au BufWrite * :Autoformat
+
