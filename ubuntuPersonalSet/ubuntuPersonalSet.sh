@@ -12,14 +12,25 @@ function installSoftware()
     sudo apt-get install clang-format
     sudo apt-get install golang-1.9
     sudo apt-get install golang-go
-    #    go get -u mvdan.cc/sh/cmd/shfmt
+    #go get -u mvdan.cc/sh/cmd/shfmt
 }
 
 #copy the default config file
 function cpConfigFile()
 {
+    if [ ! -d $HOME"/Bin" ]; then
+        echo "make -p ~/Bin."
+        mkdir -p ~/Bin
+    else
+        echo "~/Bin is exist."
+    fi
+
     cp ../vim/.vimrc ~/
     cp ../git/.gitmsg ~/
+    cp ../scripts/personalCmd.sh ~/Bin/
+
+    #add personal command to the .bashrc
+    echo "source ~/Bin/personalCmd.sh" >> ~/.bashrc
 }
 
 #config the git
@@ -36,12 +47,17 @@ function gitConfig()
 
 function installVimPlug()
 {
-    git clone https://github.com/VundleVim/Vundle.vim.git \
-        ~/.vim/bundle/Vundle.vim
+    if [ ! -d $HOME"/.vim/bundle/Vundle.vim" ]; then
+        git clone https://github.com/VundleVim/Vundle.vim.git \
+            ~/.vim/bundle/Vundle.vim
+    else
+        echo "Vundle plugin is install."
+    fi
+
     vim +BundleInstall +qall
 }
 
 installSoftware
 gitConfig
-#cpConfigFile
+cpConfigFile
 installVimPlug
