@@ -38,10 +38,10 @@ set foldmethod=indent
 set foldlevel=99
 
 " <--- cscope key map config"
-nmap <C-[>s :cs find s <C-R>=expand("<cword>") <CR><CR>
-nmap <C-[>g :cs find g <C-R>=expand("<cword>") <CR><CR>
-nmap <C-[>c :cs find c <C-R>=expand("<cword>") <CR><CR>
-nmap <C-[>f :cs find f <C-R>=expand("<cword>") <CR><CR>
+nmap <C-y>s :cs find s <C-R>=expand("<cword>") <CR><CR>
+nmap <C-y>g :cs find g <C-R>=expand("<cword>") <CR><CR>
+nmap <C-y>c :cs find c <C-R>=expand("<cword>") <CR><CR>
+nmap <C-y>f :cs find f <C-R>=expand("<cword>") <CR><CR>
 " cscope key map config --->"
 
 " <--- cscope and ctags config"
