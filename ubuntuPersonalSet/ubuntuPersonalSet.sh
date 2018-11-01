@@ -11,7 +11,8 @@ function installSoftware()
     sudo apt-get install python-autopep8
     sudo apt-get install clang-format
     sudo apt-get install golang-1.9
-    go get -u mvdan.cc/sh/cmd/shfmt
+    sudo apt-get install golang-go
+    #    go get -u mvdan.cc/sh/cmd/shfmt
 }
 
 #copy the default config file
