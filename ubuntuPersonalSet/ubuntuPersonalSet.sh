@@ -12,6 +12,7 @@ function installSoftware()
     sudo apt-get install clang-format
     sudo apt-get install golang-1.9
     sudo apt-get install golang-go
+    sudo apt-get install fcitx
     #go get -u mvdan.cc/sh/cmd/shfmt
 }
 
