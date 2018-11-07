@@ -18,7 +18,7 @@ syntax on
 
 imap <C-k> <Esc>
 vmap <C-k> <Esc>
-nnoremap <C-\> %x<C-O>x
+"nnoremap <C-\> %x<C-O>x
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -98,6 +98,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " The nerdtree plug"
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 
+" The tagbar plug"
+Plugin 'https://github.com/majutsushi/tagbar.git'
+
 " The ailine plug"
 Plugin 'bling/vim-airline'
 
@@ -137,7 +140,13 @@ filetype plugin indent on    " required
 " auto open the NERDTree plugin"
 autocmd vimenter * NERDTree
 " Set the nerdtree size "
-let NERDTreeWinSize=10
+let NERDTreeWinSize=15
+let g:DTreeMinimalUI=1
+
+" auto open the tagbar plugin"
+let g:tagbar_compact = 1
+let g:tagbar_vertical = 30
+autocmd VimEnter * TagbarToggle
 
 " auto set the default cursor position on the editing file"
 wincmd w
