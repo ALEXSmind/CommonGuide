@@ -153,8 +153,8 @@ let g:tagbar_vertical = 30
 autocmd VimEnter * TagbarToggle
 
 " auto set the default cursor position on the editing file"
-wincmd w
-autocmd VimEnter * wincmd w
+" wincmd w
+autocmd VimEnter * wincmd l
 
 " auto format the code while you save the file
 au BufWrite * :Autoformat
