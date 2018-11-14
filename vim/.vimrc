@@ -46,7 +46,11 @@ nmap <C-y>f :cs find f <C-R>=expand("<cword>") <CR><CR>
 
 " <--- cscope and ctags config"
 "path is the code didrectory
+"
+set nocsverb
 cscope add ~/.vim/tags/cscope.out ~/.vim/tags
+set csverb
+
 set tags=~/.vim/tags/tags
 " cscope and ctags config --->"
 
