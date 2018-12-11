@@ -1,0 +1,28 @@
+###############################################################################
+#                       Ubuntu静态路由配置指导                                #
+#                 可用于Ubuntu通过不同网卡访问不同网段地址                    #
+###############################################################################
+
+1.Delete the default gateway for devName0
+$sudo route del default gw xxx.xxx.xxx.xxx dev devName0
+
+2.Add the default gateway for the devName1
+$sudo route add default gw xx.xx.xx.xx dev devName1
+
+3.Add the special net address route for devName0
+$sudo route add -net 10.70.120.0/23 gw 10.70.120.254 dev devName0
+
+4.配置开机自启
+$sudo vim /etc/rc.local
+... ...
+
+# By default this script does nothing.
+
+#route add default gw 172.30.20.1 dev wlp5s0
+#route add -net 10.70.120.0/23 gw 10.70.120.254 dev enp1s0
+route add -net 10.70.20.0/23 gw 10.70.120.254 dev enp1s0
+
+exit 0
+... ...
+
+$sudo reboot
