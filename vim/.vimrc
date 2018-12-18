@@ -157,5 +157,5 @@ autocmd VimEnter * TagbarToggle
 autocmd VimEnter * wincmd l
 
 " auto format the code while you save the file
-au BufWrite * :Autoformat
+" au BufWrite * :Autoformat
 
