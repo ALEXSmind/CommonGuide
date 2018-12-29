@@ -80,3 +80,7 @@ $ sudo mount /dev/nbd0p1 /mnt/test1
 
 #去连接
 $ sudo qemu-nbd -d /dev/nbd0p1
+
+12.Qemu boot ubuntu iso
+$sudo qemu-system-x86_64 -hda ubuntu-amd64-1-vcpu.raw --cdrom ubuntu-16.04.5-desktop-amd64.iso --enable-kvm -m 2048M
+
