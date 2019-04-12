@@ -54,8 +54,8 @@ function update_tag {
         rm ${CSCOPE_OUT}
     fi
 
-    find ${SOURCE_DIR} -type f -name *.c -o -type f -name *.cxx -o -type f -name \
-        *.cpp -o -type f -name *.h > ${FILE_LIST}
+    find ${SOURCE_DIR} -type f -name "*.c" -o -type f -name "*.cxx" -o -type f -name \
+        "*.cpp" -o -type f -name "*.h" > ${FILE_LIST}
 
     cscope -bkqi ${FILE_LIST} -f${CSCOPE_OUT} > /dev/null 2>&1
 
