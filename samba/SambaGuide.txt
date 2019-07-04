@@ -1,4 +1,6 @@
-#Linux Samba服务器配置
+###############################################################################
+#                          Linux(rpm) Samba服务器配置                         #
+###############################################################################
 
 1.查看安装情况:
 # rpm -qa | grep samba
@@ -75,3 +77,53 @@ guest ok = yes
 将Linux smb服务添加到防火墙的例外中
 以root用户执行setup命令#setup弹出...重启生效,如果不想重启,用命令
 #setenforce 0
+
+###############################################################################
+#                          Linux(sudo-apt) Samba服务器配置                         #
+###############################################################################
+1.安装Samba
+$sudo apt-get install samba
+
+2.创建用户
+$sudo adduser xxx(xxx 为用户名)
+
+3.samba服务添加用户
+$sudo smbpasswd -a xxx(xxx为步骤2创建用户名)
+
+4.创建共享路径
+$mkdir sharePathDir(sharePathDir 为共享文件路径)
+
+5.修改共享文件owner
+$chown -R xxx:xxx sharePathDir/
+
+6.配置smb.conf
+[global]
+workgroup = WORKGROUP
+server string = Samba Server Version %v
+netbios name = ImgPath05
+
+[ImgPath]
+comment = Public stuff
+path = sharePathDir
+public = yes
+writeable = yes
+browseable = yes
+guest ok = yes
+
+7.启动Samba服务
+$sudo systemctl start smbd or sudo /etc/init.d/samba start
+
+8.要检查Samba服务
+$systemctl status smbd
+
+9.重启Samba
+$sudo /etc/init.d/smbd restart or sudo service smbd restart
+
+10.关闭samba服务
+$sudo /etc/init.d/samba stop
+
+11.Windows 端
+地址栏直接输入：\\IP(xxx.xxx.xxx.xxx)
+
+
+
