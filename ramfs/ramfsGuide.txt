@@ -55,7 +55,8 @@ $make install
 #进入busybox 安装目录_install
 $cd ./_install
 
-$mkdir proc sys dev etc ./etc/init.d
+#创建目录,其中x.x.x为配套kernel 版本，可通过uname -r命令查看，如4.9.0+
+$mkdir proc sys dev etc ./etc/init.d lib/modules/x.x.x root
 
 $vim ./etc/init.d/rcS
 ... ...
@@ -194,6 +195,6 @@ $gzip -c rootfs.img > rootfs.img.bz
 4.Qemu启动
 
 #其中bzImage为内核镜像，rootfs.img.gz为制作romfs
-$qemu -kernel $LINUX/arch/i386/boot/bzImage -initrd rootfs.img.gz -append
+$qemu -kernel $LINUX/arch/i386/boot/bzImage -initrd rootfs.img.bz -append
 "root=/dev/ram rdinit=sbin/init noapic"
 
