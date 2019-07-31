@@ -159,3 +159,6 @@ autocmd VimEnter * wincmd l
 " auto format the code while you save the file
 " au BufWrite * :Autoformat
 
+" insert time on insert mode
+iab xt <c-r>=strftime("%y-%m-%d")<cr>
+
