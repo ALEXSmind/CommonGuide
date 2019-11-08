@@ -162,3 +162,6 @@ autocmd VimEnter * wincmd l
 " insert time on insert mode
 iab xt <c-r>=strftime("%y-%m-%d")<cr>
 
+nmap gl 080l
+
+
